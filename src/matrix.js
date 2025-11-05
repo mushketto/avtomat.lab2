@@ -26,19 +26,22 @@ function isSquare(A) {
 }
 
 function add(A, B) {
-  _validateMatrix(A, 'A');
-  _validateMatrix(B, 'B');
-  const [r1, c1] = shape(A);
-  const [r2, c2] = shape(B);
-  if (r1 !== r2 || c1 !== c2) throw new Error('Matrix dimensions must match for addition');
-  const C = [];
-  for (let i = 0; i < r1; i++) {
-    const row = new Array(c1);
-    for (let j = 0; j < c1; j++) row[j] = A[i][j] + B[i][j];
-    C.push(row);
+  if (!Array.isArray(A) || !Array.isArray(B)) throw new Error("Inputs must be arrays");
+  if (A.length !== B.length || A[0].length !== B[0].length) throw new Error("Matrix sizes must match");
+  const result = [];
+  for (let i = 0; i < A.length; i++) {
+    const row = [];
+    for (let j = 0; j < A[0].length; j++) {
+      row.push(A[i][j] + B[i][j]);
+    }
+    result.push(row);
   }
-  return C;
+  return result;
 }
+
+module.exports = { add };
+
+
 
 function subtract(A, B) {
   _validateMatrix(A, 'A');
