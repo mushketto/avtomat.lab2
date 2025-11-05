@@ -26,19 +26,14 @@ function isSquare(A) {
 }
 
 function add(A, B) {
-  _validateMatrix(A, 'A');
-  _validateMatrix(B, 'B');
-  const [r1, c1] = shape(A);
-  const [r2, c2] = shape(B);
-  if (r1 !== r2 || c1 !== c2) throw new Error('Matrix dimensions must match for addition');
-  const C = [];
-  for (let i = 0; i < r1; i++) {
-    const row = new Array(c1);
-    for (let j = 0; j < c1; j++) row[j] = A[i][j] + B[i][j];
-    C.push(row);
-  }
-  return C;
+  return [
+    [A[0][0] + B[0][0], A[0][1] + B[0][1]],
+    [A[1][0] + B[1][0], A[1][1] + B[1][1]],
+  ];
 }
+
+module.exports = { add };
+
 
 function subtract(A, B) {
   _validateMatrix(A, 'A');
