@@ -26,13 +26,21 @@ function isSquare(A) {
 }
 
 function add(A, B) {
-  return [
-    [A[0][0] + B[0][0], A[0][1] + B[0][1]],
-    [A[1][0] + B[1][0], A[1][1] + B[1][1]],
-  ];
+  if (!Array.isArray(A) || !Array.isArray(B)) throw new Error("Inputs must be arrays");
+  if (A.length !== B.length || A[0].length !== B[0].length) throw new Error("Matrix sizes must match");
+  const result = [];
+  for (let i = 0; i < A.length; i++) {
+    const row = [];
+    for (let j = 0; j < A[0].length; j++) {
+      row.push(A[i][j] + B[i][j]);
+    }
+    result.push(row);
+  }
+  return result;
 }
 
 module.exports = { add };
+
 
 
 function subtract(A, B) {
