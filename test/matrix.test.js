@@ -9,7 +9,7 @@ describe('Matrix library (TDD demo)', function() {
     it('adds two 2x2 matrices', function() {
       const A = [[1,2],[3,4]];
       const B = [[5,6],[7,8]];
-      //const C = M.add(A, B);
+      const C = M.add(A, B);
       expect(C).to.deep.equal([[6,8],[10,12]]);
     });
 
